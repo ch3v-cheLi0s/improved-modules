@@ -1,4 +1,4 @@
-# meta developer: @LolDecMods and fixed by @three_six_mafia
+# meta developer: @LolDecMods
 # scope: hikka_min 1.6.2
 
 import base64
