@@ -1,4 +1,4 @@
-# meta developer: @LolDecMods
+# meta developer: @LolDecMods and fixed by @three_six_mafia
 # scope: hikka_min 1.6.2
 
 import base64
@@ -19,7 +19,7 @@ class bssh(loader.Module):
         """| Зашифровать текст Base64"""
         text_to_encode = m.text.split(" ", 1)[1]
         encoded_text = base64.b64encode(text_to_encode.encode()).decode()
-        await utils.answer(m, f"| <emoji document_id=5352784961814405440>⚡️</emoji> |\n Зашифрованный текст:\n<code>{encoded_text}</code>\n| <emoji document_id=5352784961814405440>⚡️</emoji> |")
+        await utils.answer(m, f"| <emoji document_id=5352784961814405440>⚡️</emoji> |\nЗашифрованный текст:\n<code>{encoded_text}</code>\n| <emoji document_id=5352784961814405440>⚡️</emoji> |")
 
     @loader.command(alias="decode", ru_doc="| Расшифровать текст Base64")
     async def dcd64cmd(self, m: Message):
@@ -27,6 +27,6 @@ class bssh(loader.Module):
         text_to_decode = m.text.split(" ", 1)[1]
         try:
             decoded_text = base64.b64decode(text_to_decode).decode()
-            await utils.answer(m, f"| <emoji document_id=5242365016241352434>🔱</emoji> |\n Расшифрованный текст:\n<code>{decoded_text}</code>\n| <emoji document_id=5242365016241352434>🔱</emoji> |")
+            await utils.answer(m, f"| <emoji document_id=5242365016241352434>🔱</emoji> |\nРасшифрованный текст:\n<code>{decoded_text}</code>\n| <emoji document_id=5242365016241352434>🔱</emoji> |")
         except Exception as e:
-            await utils.answer(m, f"| <emoji document_id=5440409175190415592>❌️</emoji> | Ошибка при декодировании: {str(e)} | <emoji document_id=5440409175190415592>❌️</emoji> |")
+            await utils.answer(m, f"| <emoji document_id=5440409175190415592>❌️</emoji> |\nОшибка при декодировании: {str(e)}\n| <emoji document_id=5440409175190415592>❌️</emoji> |")
