@@ -13,17 +13,13 @@
 
 import io
 from io import BytesIO
-
 from PIL import Image
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-
 from .. import loader, utils
-
 
 def register(cb):
     cb(VsratoMemesMod())
-
 
 class VsratoMemesMod(loader.Module):
     """Всратые мемы."""
@@ -44,7 +40,7 @@ class VsratoMemesMod(loader.Module):
             except YouBlockedUserError:
                 await event.edit("<b>Разблокируй @neural_wise_wolf_bot</b>")
                 return
-            await event.client.send_file(event.to_id, response.media)
+            await event.client.send_file(event.to_id, response.media, reply_to=event.reply_to_msg_id)
         await event.delete()
 
     async def vsratocmd(self, event):
@@ -79,10 +75,9 @@ class VsratoMemesMod(loader.Module):
                 await event.reply("<b>Разблокируй @vsratoslavbot.</b>")
                 return
             await event.client.send_file(
-                event.to_id, response.media, reply_to=await event.get_reply_message()
+                event.to_id, response.media, reply_to=event.reply_to_msg_id
             )
         event.delete()
-
 
 async def check_media(message, reply):
     if reply and reply.media:
@@ -105,7 +100,6 @@ async def check_media(message, reply):
             return data
         except:
             return None
-
 
 def kekw(reply):
     scrrrra = Image.open(BytesIO(reply))
