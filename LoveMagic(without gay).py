@@ -105,8 +105,6 @@ class ILYMod(loader.Module):
             inline=inline,
         )
 
-            await obj.unload()
-
     @loader.command(ru_doc="Отправить анимацию сердец в инлайне")
     async def ilyicmd(self, message: Message):
         """Send inline message with animated hearts"""
