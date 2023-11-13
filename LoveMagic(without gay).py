@@ -88,23 +88,6 @@ class ILYMod(loader.Module):
 
             await obj.unload()
 
-    async def ily_handler_gay(
-        self,
-        obj: Union[InlineCall, Message],
-        text: str,
-        inline: bool = False,
-    ):
-        obj = await self.animate(
-            obj,
-            self.gay_frames
-            + [
-                f'<b>{" ".join(text.split()[: i + 1])}</b>'
-                for i in range(len(text.split()))
-            ],
-            interval=0.5,
-            inline=inline,
-        )
-
     @loader.command(ru_doc="Отправить анимацию сердец в инлайне")
     async def ilyicmd(self, message: Message):
         """Send inline message with animated hearts"""
