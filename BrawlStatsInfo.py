@@ -6,7 +6,7 @@
 # Name: brawl_stats
 # Author: Den4ikSuperOstryyPer4ik
 # Commands:
-# .get_my_ip              | .set_bs_api_token | .bs_get_player | .bs_get_club | .bs_get_club_members
+# .set_bs_api_token | .bs_get_player | .bs_get_club | .bs_get_club_members
 # .bs_get_player_brawlers
 # ---------------------------------------------------------------------------------
 
@@ -59,12 +59,6 @@ class BrawlStatsInfo(loader.Module):
         return r["ip"]
 
     async def client_ready(self, client, db):
-        await client.send_message(
-            "me",
-            "<b>Модуль был загружен/перезагружен.\nВаш IP-Адрес для получения"
-            " API-Токена BrawlStars: <code>{}</code></b>".format(self.getip()),
-        )
-
         try:
             self.bsc = (
                 bs.Client(self.config["bs_api_token"])
@@ -82,15 +76,6 @@ class BrawlStatsInfo(loader.Module):
                 else None
             )
         return None
-
-    @loader.command()
-    async def get_my_ip(self, message):
-        """Получить свой IP-Адрес для получения API-Токен BrawlStarsAPI"""
-        await utils.answer(
-            message,
-            "<b>Ваш IP-Адрес для получения API-Токена BrawlStars: <code>{}</code></b>"
-            .format(self.getip()),
-        )
 
     @loader.command()
     async def set_bs_api_token(self, message):
