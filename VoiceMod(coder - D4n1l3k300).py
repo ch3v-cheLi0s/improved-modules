@@ -262,7 +262,7 @@ class VoiceMod(loader.Module):
         except:
             await message.edit(self.tag + "Не удалось распознать...")
 
-async def get_audio_shazam(message):
+async def get_media_shazam(message):
     class rct:
         media = io.BytesIO()
         reply = None
