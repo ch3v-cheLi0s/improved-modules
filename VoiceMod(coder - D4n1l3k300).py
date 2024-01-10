@@ -87,7 +87,7 @@ class VoiceMod(loader.Module):
         self.db = db
 
     async def vplaycmd(self, m: types.Message):
-        """— [чат (не обязательно)] <ссылка/ответом на аудио> - Воспроизвести аудио в ГЧ ▶"""
+        """— [чат (не обязательно)] <ссылка/ответом на аудио> - Начать воспроизведение медиа в ГЧ 🏁"""
         args = utils.get_args_raw(m)
         r = await m.get_reply_message()
         chat = from_file = link = None
@@ -198,7 +198,7 @@ class VoiceMod(loader.Module):
         await utils.answer(m, self.strings("mute"))
 
     async def vpausecmd(self, m: types.Message):
-        """— Остановить медиа в ГЧ"""
+        """— Остановить медиа в ГЧ ⏸"""
         chat = await self.get_chat(m)
         if not chat:
             return
@@ -207,7 +207,7 @@ class VoiceMod(loader.Module):
         await utils.answer(m, self.strings("pause"))
 
     async def vresumecmd(self, m: types.Message):
-        """— Resume player in VC"""
+        """— Возобновить воспроизведение в ГЧ ▶"""
         chat = await self.get_chat(m)
         if not chat:
             return
