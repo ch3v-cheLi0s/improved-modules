@@ -255,12 +255,12 @@ class VoiceMod(loader.Module):
             await message.client.send_file(
                 message.to_id,
                 file=track["images"]["background"],
-                caption=self.tag + "Распознанный трек: " + track["share"]["subject"],
+                caption=tag + "Распознанный трек: " + track["share"]["subject"],
                 reply_to=s.reply.id,
             )
             await message.delete()
         except:
-            await message.edit(self.tag + "Не удалось распознать...")
+            await message.edit(tag + "Не удалось распознать...")
 
 async def get_media_shazam(message):
     class rct:
@@ -269,11 +269,11 @@ async def get_media_shazam(message):
     reply = await message.get_reply_message()
     if reply and reply.file and reply.file.mime_type.split("/")[0] in ("audio", "video"):
         ae = rct()
-        await utils.answer(message, self.tag + "<b>Скачиваю...</b>")
+        await utils.answer(message, tag + "<b>Скачиваю...</b>")
         ae.media = io.BytesIO(await reply.download_media(bytes))
         ae.reply = reply
-        await message.edit(self.tag +"<b>Распознаю...</b>")
+        await message.edit(tag +"<b>Распознаю...</b>")
         return ae
     else:
-        await utils.answer(message, self.tag + "<b>Вы не ответили на медиа для распознавания...</b>")
+        await utils.answer(message, tag + "<b>Вы не ответили на медиа для распознавания...</b>")
         return None
