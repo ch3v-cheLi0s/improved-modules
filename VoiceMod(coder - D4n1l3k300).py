@@ -268,10 +268,10 @@ async def get_media_shazam(message):
     reply = await message.get_reply_message()
     if reply and reply.file and reply.file.mime_type.split("/")[0] in ("audio", "video"):
         ae = rct()
-        await utils.answer(message, self.tag + "<u><b>[Shazam]</u></b> <b>Скачиваю...</b>")
+        await utils.answer(message, "<u><b>[Shazam]</u></b> <b>Скачиваю...</b>")
         ae.media = io.BytesIO(await reply.download_media(bytes))
         ae.reply = reply
-        await message.edit(self.tag +"<u><b>[Shazam]</u></b> <b>Распознаю...</b>")
+        await message.edit("<u><b>[Shazam]</u></b> <b>Распознаю...</b>")
         return ae
     else:
         await utils.answer(message, "<u><b>[Shazam]</u></b> <b>Вы не ответили на медиа для распознавания...</b>")
