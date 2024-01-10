@@ -259,7 +259,7 @@ class VoiceMod(loader.Module):
             )
             await message.delete()
         except:
-            await message.edit(self.tag + "Не удалось распознать...")
+            await message.edit("<u><b>[Shazam]</u></b> Не удалось распознать...")
 
 async def get_media_shazam(message):
     class rct:
