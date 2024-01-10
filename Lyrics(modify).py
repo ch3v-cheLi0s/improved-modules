@@ -1,34 +1,12 @@
-# ---------------------------------------------------------------------------------
-#  /\_/\  🌐 This module was loaded through https://t.me/hikkamods_bot
-# ( o.o )  🔓 Not licensed.
-#  > ^ <   ⚠️ Owner of heta.hikariatama.ru doesn't take any responsibilities or intellectual property rights regarding this script
-# ---------------------------------------------------------------------------------
-# Name: music
-# Description: Sings songs
-# Author: GeekTG
-# Commands:
-# .lyrics | .shazam
-# ---------------------------------------------------------------------------------
-
-
-# -*- coding: utf-8 -*-
-
-# Module author: Official Repo, @dekftgmodules
-
 # requires: lyricsgenius ShazamAPI
-
 import io
-
 import lyricsgenius
 from ShazamAPI import Shazam
-
 from .. import loader, utils
-
 
 @loader.tds
 class LyricsMod(loader.Module):
     """Sings songs"""
-
     strings = {
         "name": "Lyrics",
         "genius_api_token_doc": (
@@ -38,7 +16,6 @@ class LyricsMod(loader.Module):
         "song_not_found": "<b>Song not found</b>",
         "missing_token": "<b>API Token missing</b>",
     }
-
     tag = "<b>[Shazam]</b> "
 
     def __init__(self):
@@ -74,7 +51,7 @@ class LyricsMod(loader.Module):
             return
         await utils.answer(message, utils.escape_html(song.lyrics))
 
-    async def shazamcmd(self, message):
+    async def shazamitcmd(self, message):
         """.shazam <reply to audio or video> - распознать трек"""
         s = await get_media_shazam(message)
         if not s:
@@ -97,7 +74,6 @@ async def get_media_shazam(message):
     class rct:
         media = io.BytesIO()
         reply = None
-
     reply = await message.get_reply_message()
     if reply and reply.file and reply.file.mime_type.split("/")[0] in ("audio", "video"):
         ae = rct()
