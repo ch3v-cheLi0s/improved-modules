@@ -58,7 +58,6 @@ class VoiceMod(loader.Module):
         "logtostderr": False,
     }
     group_calls: Dict[int, GroupCallFile] = {}
-    tag = "<u><b>[Shazam]</u></b> "
 
     async def get_chat(self, m: types.Message):
         args = utils.get_args_raw(m)
@@ -255,12 +254,12 @@ class VoiceMod(loader.Module):
             await message.client.send_file(
                 message.to_id,
                 file=track["images"]["background"],
-                caption=tag + "Распознанный трек: " + track["share"]["subject"],
+                caption= "<u><b>[Shazam]</u></b> Распознанный трек: " + track["share"]["subject"],
                 reply_to=s.reply.id,
             )
             await message.delete()
         except:
-            await message.edit(tag + "Не удалось распознать...")
+            await message.edit(self.tag + "Не удалось распознать...")
 
 async def get_media_shazam(message):
     class rct:
@@ -269,11 +268,11 @@ async def get_media_shazam(message):
     reply = await message.get_reply_message()
     if reply and reply.file and reply.file.mime_type.split("/")[0] in ("audio", "video"):
         ae = rct()
-        await utils.answer(message, tag + "<b>Скачиваю...</b>")
+        await utils.answer(message, self.tag + "<u><b>[Shazam]</u></b> <b>Скачиваю...</b>")
         ae.media = io.BytesIO(await reply.download_media(bytes))
         ae.reply = reply
-        await message.edit(tag +"<b>Распознаю...</b>")
+        await message.edit(self.tag +"<u><b>[Shazam]</u></b> <b>Распознаю...</b>")
         return ae
     else:
-        await utils.answer(message, tag + "<b>Вы не ответили на медиа для распознавания...</b>")
+        await utils.answer(message, "<u><b>[Shazam]</u></b> <b>Вы не ответили на медиа для распознавания...</b>")
         return None
