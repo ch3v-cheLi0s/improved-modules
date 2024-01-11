@@ -2,6 +2,7 @@
 #   supplemented by Yahikor0     #
 #   been modificated by ch3vy    #
 
+#requires ffmpeg-python pytgcalls[telethon] youtube-dl ShazamAPI
 import io
 import os
 import re
