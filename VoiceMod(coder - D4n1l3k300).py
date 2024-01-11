@@ -86,7 +86,7 @@ class VoiceMod(loader.Module):
         self.db = db
 
     async def vplaycmd(self, m: types.Message):
-        """— [чат (не обязательно)] <ссылка/ответом на аудио> - Начать воспроизведение медиа в ГЧ 🏁"""
+        """[чат (не обязательно)] <ссылка/ответом на аудио> — Начать воспроизведение медиа в ГЧ 🏁"""
         args = utils.get_args_raw(m)
         r = await m.get_reply_message()
         chat = from_file = link = None
@@ -220,7 +220,7 @@ class VoiceMod(loader.Module):
 
     @loader.unrestricted
     async def smcmd(self, message):                                                                                     
-        """— «название» - Найти музыку по названию 🔎"""
+        """«название» — Найти музыку по названию 🔎"""
         args = utils.get_args_raw(message)
         reply = await message.get_reply_message()
         if reply:
@@ -243,7 +243,7 @@ class VoiceMod(loader.Module):
             )
 
     async def shazamcmd(self, message):
-        """— «ответ на аудио» - Распознать и получить информацию о треке 📡"""
+        """«ответ на аудио» — Распознать и получить информацию о треке 📡"""
         s = await get_media_shazam(message)
         if not s:
             return
