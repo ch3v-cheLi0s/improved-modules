@@ -32,10 +32,10 @@ logger = logging.getLogger(__name__)
 
 
 @loader.tds
-class WebShotMod(loader.Module):
+class screenshotMod(loader.Module):
     """Screenshot module"""
 
-    strings = {"name": "WebShot"}
+    strings = {"name": "screenshot"}
 
     async def client_ready(self, client, db):
         self.client = client
@@ -86,5 +86,4 @@ class WebShotMod(loader.Module):
             message.to_id, "fileScreenshot.png", force_document=True
         )
         os.remove("fileScreenshot.png")
-        await message.client.send_file(message.to_id, file, reply_to=reply)
         await message.delete()
