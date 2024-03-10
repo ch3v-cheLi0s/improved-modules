@@ -115,7 +115,7 @@ def strftime(time: Union[int, float]):
 @loader.tds
 class ShitQuotesMod(loader.Module):
     """
-    Это модификация модуля! @three_six_mafia
+    модуль цитат
     """
 
     strings = {
